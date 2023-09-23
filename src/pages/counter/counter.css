@@ -1,0 +1,21 @@
+.counter {
+  width: 100%;
+  margin: auto;
+}
+
+.counter fieldset {
+  border: unset;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+hr {
+  all: unset;
+  display: block;
+  width: calc(100% - (var(--spacing) * 2));
+  margin: var(--spacing) auto;
+  border-top: 1px solid;
+}
