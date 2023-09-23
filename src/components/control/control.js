@@ -1,9 +1,9 @@
 import React from "react";
-import "./control.css";
+import styles from "./control.module.css";
 
 function Control(props) {
   return (
-    <button className="control" type="button" onClick={props.onClick}>
+    <button className={styles.control} type="button" onClick={props.onClick}>
       {props.children}
     </button>
   );

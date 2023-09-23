@@ -1,12 +1,12 @@
+import Control from "@components/control";
+import Display from "@components/display";
 import React from "react";
 import { connect } from "react-redux";
-import Control from "../../components/control";
-import Display from "../../components/display";
-import "./counter.css";
+import styles from "./counter.module.css";
 
 function Counter(props) {
   return (
-    <div className="counter">
+    <div className={styles.counter}>
       <Display>{props.count}</Display>
       <fieldset>
         <Control onClick={props.increment}>INCREASE</Control>
