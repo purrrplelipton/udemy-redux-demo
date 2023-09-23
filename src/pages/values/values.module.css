@@ -1,0 +1,17 @@
+.value-adder {
+  font-size: 1.25em;
+  display: block;
+  margin: 0 auto 1em;
+}
+
+.values-list {
+  list-style-type: none;
+  max-height: 320px;
+  overflow: hidden auto;
+  padding-top: 1em;
+  transition: padding-top 0.3s ease-in-out;
+}
+
+.values-list:empty {
+  padding-top: 0;
+}

@@ -1,0 +1,7 @@
+hr {
+  all: unset;
+  display: block;
+  width: calc(100% - (var(--spacing) * 2));
+  margin: var(--spacing) auto;
+  border-top: 1px solid #424242;
+}

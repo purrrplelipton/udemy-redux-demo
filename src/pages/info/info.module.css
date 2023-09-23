@@ -1,0 +1,44 @@
+.info-section form {
+  position: relative;
+  isolation: isolate;
+  font-size: 1.125em;
+  line-height: 0.875;
+}
+
+.info-section form::after {
+  content: attr(data-message);
+  position: absolute;
+  inset: 0 0 auto auto;
+  font-size: 0.875em;
+  color: #ef5350;
+}
+
+.info-section form input {
+  border: unset;
+  font: inherit;
+  display: block;
+  padding: 0.375em 0.625em;
+  margin-bottom: 0.75em;
+}
+
+.info-section ul {
+  list-style-type: none;
+  max-height: 320px;
+  padding: 1em 0;
+  transition: padding 0.3s ease-in-out;
+}
+
+.info-section ul:empty {
+  padding: 0;
+}
+
+.info-section ul li {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.info-section ul li .trash {
+  color: #ef5350;
+}

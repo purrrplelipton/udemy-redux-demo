@@ -26,6 +26,15 @@ body {
   margin-right: auto;
   margin-left: auto;
   display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: stretch;
+}
+
+#root > * {
+  width: calc(100% - (var(--spacing) * 2));
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media only screen and (prefers-color-scheme: dark) {

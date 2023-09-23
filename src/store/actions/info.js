@@ -1,0 +1,4 @@
+const ADD_INFO = "ADD_INFO";
+const REMOVE_INFO = "REMOVE_INFO";
+
+export { ADD_INFO, REMOVE_INFO };
