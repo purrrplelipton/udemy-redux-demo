@@ -1,9 +1,9 @@
+import TrashX from "@assets/vectors/trash-x";
 import Control from "@components/control";
 import { infoActions } from "@src/store/actions";
 import React from "react";
 import { connect } from "react-redux";
 import styles from "./info.module.css";
-import TrashX from "@assets/vectors/trash-x";
 
 function Info(props) {
   const { ADD_INFO, REMOVE_INFO } = props;
@@ -19,7 +19,7 @@ function Info(props) {
       }, 5000);
     }
     if (
-      Number.isNaN(data.age) ||
+      Number.isNaN(+data.age) ||
       data.age.length !== 2 ||
       parseInt(data.age, 10) < 18 ||
       parseInt(data.age, 10) > 60
@@ -30,6 +30,8 @@ function Info(props) {
       }, 5000);
     }
     ADD_INFO({ ...data, age: parseInt(data.age, 10) });
+    target["full-name"].value = "";
+    target.age.value = "";
   }
 
   return (
@@ -65,13 +67,11 @@ function Info(props) {
   );
 }
 
-const mapStateToProps = (state) => ({ infos: state.infoReducer.value });
+const mapStateToProps = (state) => ({ infos: state.infoReducer });
 
 const mapDispatchToProps = (dispatch) => ({
-  ADD_INFO: (data) =>
-    dispatch({ type: infoActions.ADD_INFO, payload: { ...data } }),
-  REMOVE_INFO: (id) =>
-    dispatch({ type: infoActions.REMOVE_INFO, payload: { id } }),
+  ADD_INFO: (data) => dispatch(infoActions.addInfo(data)),
+  REMOVE_INFO: (id) => dispatch(infoActions.removeInfo(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Info);

@@ -1,6 +1,5 @@
 import Control from "@components/control";
 import { valuesActions } from "@src/store/actions";
-import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { connect } from "react-redux";
 import styles from "./values.module.css";
@@ -16,33 +15,24 @@ export const Values = (props) => {
         Store Result
       </Control>
       <ul className={styles["values-list"]}>
-        <AnimatePresence>
-          {props.values.map(({ id, value }) => (
-            <motion.li
-              key={id}
-              initial={{ maxHeight: 0, opacity: 0, paddingBottom: 0 }}
-              animate={{ maxHeight: "3em", opacity: 1, paddingBottom: "1em" }}
-              exit={{ maxHeight: 0, opacity: 0, paddingBottom: 0 }}
-            >
-              <Control onClick={() => REMOVE_VALUE(id)}>{value}</Control>
-            </motion.li>
-          ))}
-        </AnimatePresence>
+        {props.values.map(({ id, value }) => (
+          <li key={id}>
+            <Control onClick={() => REMOVE_VALUE(id)}>{value}</Control>
+          </li>
+        ))}
       </ul>
     </section>
   );
 };
 
 const mapStateToProps = (state) => ({
-  values: state.valuesReducer.value,
-  count: state.countReducer.value,
+  values: state.valuesReducer,
+  count: state.countReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  STORE_VALUE: (value) =>
-    dispatch({ type: valuesActions.STORE_VALUE, payload: { value } }),
-  REMOVE_VALUE: (id) =>
-    dispatch({ type: valuesActions.REMOVE_VALUE, payload: { id } }),
+  STORE_VALUE: (value) => dispatch(valuesActions.storeValue(value)),
+  REMOVE_VALUE: (id) => dispatch(valuesActions.removeValue(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Values);

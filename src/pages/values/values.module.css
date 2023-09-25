@@ -15,3 +15,7 @@
 .values-list:empty {
   padding-top: 0;
 }
+
+.values-list li {
+  margin-bottom: 1em;
+}

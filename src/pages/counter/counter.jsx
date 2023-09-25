@@ -20,14 +20,13 @@ function Counter(props) {
   );
 }
 
-const mapStateToProps = (state) => ({ count: state.countReducer.value });
+const mapStateToProps = (state) => ({ count: state.countReducer });
 
 const mapDispatchToProps = (dispatch) => ({
-  INCREASE: () => dispatch({ type: countActions.INCREMENT }),
-  ADD: () => dispatch({ type: countActions.ADD, payload: { value: 5 } }),
-  DECREASE: () => dispatch({ type: countActions.DECREMENT }),
-  SUBTRACT: () =>
-    dispatch({ type: countActions.SUBTRACT, payload: { value: 5 } }),
+  INCREASE: () => dispatch(countActions.increment()),
+  ADD: () => dispatch(countActions.add(5)),
+  DECREASE: () => dispatch(countActions.decrement()),
+  SUBTRACT: () => dispatch(countActions.subtract(5)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

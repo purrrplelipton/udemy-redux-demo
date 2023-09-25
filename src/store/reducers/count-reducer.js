@@ -1,22 +1,19 @@
 import { countActions } from "@src/store/actions";
 
-function countReducer(state = { value: 0 }, action) {
-  switch (action.type) {
+function countReducer(state = 0, action) {
+  const { type, payload } = action;
+  switch (type) {
     case countActions.INCREMENT:
-      return { ...state, value: (state.value += 1) };
+      return state + 1;
 
-    case countActions.ADD: {
-      const { payload } = action;
-      return { ...state, value: (state.value += payload.value) };
-    }
+    case countActions.ADD:
+      return state + payload;
 
     case countActions.DECREMENT:
-      return { ...state, value: (state.value -= 1) };
+      return state - 1;
 
-    case countActions.SUBTRACT: {
-      const { payload } = action;
-      return { ...state, value: (state.value -= payload.value) };
-    }
+    case countActions.SUBTRACT:
+      return state - payload;
 
     default:
       return state;

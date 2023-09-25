@@ -1,21 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { combineReducers, legacy_createStore as createStore } from "redux";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { countReducer, infoReducer, valuesReducer } from "./store/reducers";
+import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Provider
-      store={createStore(
-        combineReducers({ countReducer, valuesReducer, infoReducer })
-      )}
-    >
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>
